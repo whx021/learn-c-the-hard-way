@@ -8,16 +8,27 @@ int main(int argc, char *argv[]) {
     for (i = 0; i < argc; ++i) {
         printf("arg %d: %s\n", i, argv[i]);
     }
-
+    
     // let's make our own array of strings
     char *states[] = {
         "California", "Oregon",
-        "Washington", "Texas"
+        "Washington", "Texas", NULL
     };
-    int num_states = 4;
+    
+    argv[0] = states[0];
+    argv[1] = states[1];
+    argv[2] = states[2];
+    argv[3] = states[3];
+
+    for (i = 0; i < argc; ++i) {
+        printf("arg %d: %s\n", i, argv[i]);
+    }
+
+    int num_states = 5;
 
     for (i = 0; i < num_states; ++i) {
         printf("state %d: %s\n", i, states[i]);
+        if (i == 1) {break;}
     }
 
     return 0;
