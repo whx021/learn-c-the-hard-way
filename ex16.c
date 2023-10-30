@@ -64,6 +64,18 @@ int main(int argc, char *argv[]) {
     // destroy them both so we clean up
     Person_destroy(joe);
     Person_destroy(frank);
+    
+    // create struct in stack
+    struct Person huxin = {
+        .name = "huxinwang", 
+        .age = 22,
+        .height = 170,
+        .weight = 120,
+    };
+
+    huxin.name = "bowlder";
+    Person_print(&huxin);
+
 
     return 0;
 }
