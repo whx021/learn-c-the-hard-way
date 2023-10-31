@@ -25,8 +25,10 @@ struct Connection {
 
 void die(const char *message) {
     if (errno) {
+        // system call or library function error
         perror(message);
     } else {
+        // custom function error
         printf("ERROR: %s\n", message);
     }
 
@@ -38,6 +40,9 @@ void Address_print(struct Address *addr) {
             addr->id, addr->name, addr->email);
 }
 
+/*
+ * Call By: Database_open
+ */ 
 void Database_load(struct Connection *conn) {
     int rc = fread(conn->db, sizeof(struct Database), 1, conn->file);
     if (rc != 1) die("Failed to load database.");
@@ -72,6 +77,9 @@ void Database_close(struct Connection *conn) {
     }
 }
 
+/*
+ * Des
+ */
 void Database_write(struct Connection *conn) {
     rewind(conn->file);
     
@@ -100,10 +108,12 @@ void Database_set(struct Connection *conn, int id, const char *name, const char 
     addr->set = 1;
     // WARING: bug, read the "How To Break It" and fix this
     char *res = strncpy(addr->name, name, MAX_DATA);
+    addr->name[MAX_DATA - 1] = '\0';
     // demonstrate the strncpy bug
     if (!res) die("Name copy failed");
 
     res = strncpy(addr->email, email, MAX_DATA);
+    addr->name[MAX_DATA - 1] = '\0';
     if (!res) die("Email copy failed");
 }
 

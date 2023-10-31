@@ -16,6 +16,7 @@ void print_info_2(int count, char **names, int *ages) {
     }
 }
 
+/* FIXME
 // array convert to pointer in argument
 // segmentation fault 
 // terminating with default action of signal 8 (SIGFPE)
@@ -26,6 +27,7 @@ void print_info_cur(int *count, char **names[], int *ages[]) {
                 (*names)[i], (*ages)[i]);
     }
 }
+*/
 
 int main(int argc, char *argv[]) {
     // create two arrays we care about
@@ -113,7 +115,7 @@ int main(int argc, char *argv[]) {
 
     // segmentation fault 
     // terminating with default action of signal 8 (SIGFPE)
-    print_info_cur(&count, &names, &ages);
+    //print_info_cur(&count, &names, &ages);
 
     return 0;
 }
