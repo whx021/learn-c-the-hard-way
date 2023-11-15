@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     int bugs = 100;
     double bug_rate = 1.2;
 
@@ -25,6 +24,11 @@ int main(int argc, char *argv[])
     int care_percentage = bugs * nul_byte;
     printf("Which means you should care %d%%.\n",
             care_percentage);
+    
+    printf("nul_byte: %s\n", nul_byte);
 
-    return 0;
+    unsigned long test_number = 0x10000000000000000;
+    printf("test_number: %ld\n", test_number);
+
+    return(0);
 }
