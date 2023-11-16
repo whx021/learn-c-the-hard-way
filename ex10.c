@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
 
     for (i = 0; i < num_states; ++i) {
         printf("state %d: %s\n", i, states[i]);
-        // if (i == 1) {break;}
+        if (i == 1) {break;}
     }
 
     return(0);

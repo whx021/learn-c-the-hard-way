@@ -36,16 +36,30 @@ int main(int argc, char *argv[]) {
     }
     
     i = 0;
-    while (i < num_states) {
+    while (i < argc) {
+        if (i >= num_states) break;
         status[i] = argv[i];
         ++i;
     }
     
     i = 0;
-    while (i < num_states) {
+    while (i < argc) {
+        if (i >= num_states) break;
         printf("state %d: %s\n", i, status[i]);
         ++i;
     }
 
-    return 0;
+    i = 0;
+    while (i < argc) {
+        printf("argv[%d] address is %p\n", i, argv[i]);
+        ++i;
+    }
+
+    i = 0;
+    while (i < num_states) {
+        printf("status[%d] address is %p\n", i, status[i]);
+        ++i;
+    }
+
+    return(0);
 }

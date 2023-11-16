@@ -1,16 +1,16 @@
 #include <stdio.h>
 
 int main(int argc, char *argv[]) {
-/*    if (argc != 2) {
+    if (argc != 2) {
         printf("ERROR: You need one argument.\n");
         // this is how you about a program
         return 1;
     }
-*/
+
     int i = 0;
     for (i = 0; argv[1][i] != '\0'; ++i) {
         char letter = argv[1][i];
-
+        //int test;
         switch (letter) {
             case 'a':
             case 'A':
@@ -37,13 +37,14 @@ int main(int argc, char *argv[]) {
                 if (i > 2) {
                     // it's only sometimes Y
                     printf("%d: 'Y'\n", i);
-                    break;
+                    break;  // no impact on the code
                 }
+                break;
             default:
                 printf("%d: %c is not a vowel\n", i, letter);
         }
     }
-    
+ 
     i = 0;
     for (i = 0; argv[1][i] != '\0'; ++i) {
         char letter = argv[1][i];
@@ -76,9 +77,10 @@ int main(int argc, char *argv[]) {
                 printf("%d: %c is not a vowel\n", i, letter);
         }
     }
-   
-    // lterate over each parameter
-    printf("Lterate over each parameter.\n");
+
+       
+    // iterate over each parameter
+    printf("Iterate over each parameter.\n");
     int j = 0;
     for (j = 0; j < argc; ++j) {
         i = 0;
@@ -142,6 +144,5 @@ int main(int argc, char *argv[]) {
         }
     }
 
-
-    return 0;
+    return(0);
 }

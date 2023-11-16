@@ -4,7 +4,7 @@ int main(int argc, char *argv[]) {
     int i = 0;
 
     if (argc == 1) {
-        printf("You only have one argument. You suck.\n");
+        printf("You don't have any argument. You suck.\n");
     } else if (argc > 1 || argc < 4) {
         printf("Here's your arguments:\n");
         for (i = 0; i < argc; ++i) {
@@ -15,5 +15,5 @@ int main(int argc, char *argv[]) {
         printf("You have too many arguments. You suck.\n");
     } 
     
-    return 0;
+    return(0);
 }
