@@ -60,10 +60,15 @@ int main(int argc, char *argv[]) {
     frank->age += 20;
     frank->weight += 20;
     Person_print(frank);
+   
+    // Address 0x0 is not stack'd malloc'd or (recently) free'd
+    // segmentation fault
+    //Person_print(NULL);
 
     // destroy them both so we clean up
     Person_destroy(joe);
     Person_destroy(frank);
+    //Person_destroy(NULL);
     
     // create struct in stack
     struct Person huxin = {
@@ -73,9 +78,8 @@ int main(int argc, char *argv[]) {
         .weight = 120,
     };
 
-    huxin.name = "bowlder";
+    huxin.name = "jade";
     Person_print(&huxin);
 
-
-    return 0;
+    return(0);
 }

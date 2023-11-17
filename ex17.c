@@ -18,6 +18,9 @@ struct Database {
     struct Address rows[MAX_ROWS];  
 };
 
+/**
+ * Description: connection file in ROM and db in RAM
+ */
 struct Connection {
     FILE *file;
     struct Database *db;
@@ -41,13 +44,19 @@ void Address_print(struct Address *addr) {
 }
 
 /**
- * Call By: Database_open
+ * Description: read data from ROM to RAM
+ * Call By: Database_open 
  */ 
 void Database_load(struct Connection *conn) {
     int rc = fread(conn->db, sizeof(struct Database), 1, conn->file);
     if (rc != 1) die("Failed to load database.");
 }
 
+/**
+ * Description: open database depend on various modes
+ * Call: Database_load
+ * Return value: upon successful completion, return a Connection pointer
+ */
 struct Connection *Database_open(const char *filename, char mode) {
     struct Connection *conn = malloc(sizeof(struct Connection));
     if (!conn) die("Memory error");
@@ -56,12 +65,15 @@ struct Connection *Database_open(const char *filename, char mode) {
     if (!conn->db) die("Memory error");
 
     if (mode == 'c') {
-         conn->file = fopen(filename, "w");
+        // Truncate file to zero length or 
+        // create text file for writing.
+        conn->file = fopen(filename, "w");
     } else {
-         conn->file = fopen(filename, "r+");
-         if (conn->file) {
-             Database_load(conn);
-         }
+        // Open for reading and writing.
+        conn->file = fopen(filename, "r+");
+        if (conn->file) {
+            Database_load(conn);
+        }
     }
 
     if (!conn->file) die("Failed to open the file");
@@ -148,6 +160,7 @@ int main(int argc, char *argv[]) {
     char *filename = argv[1];
     char action = argv[2][0];
     struct Connection *conn = Database_open(filename, action);
+
     int id = 0;
 
     if (argc > 3) id = atoi(argv[3]);
