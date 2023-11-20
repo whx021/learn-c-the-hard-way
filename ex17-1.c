@@ -37,7 +37,7 @@ void die(const char *message) {
         // custom function error
         printf("ERROR: %s\n", message);
     }
-
+;
     exit(1);
 }
 
