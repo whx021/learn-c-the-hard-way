@@ -293,7 +293,7 @@ int main(int argc, char *argv[]) {
     break;
 
   default:
-    die("Invalid action, only: c=create, g=get, s=set, d=del, l=list， f=find",
+    die("Invalid action, only: c=create, g=get, s=set, d=del, l=list，f=find",
         conn);
   }
 
