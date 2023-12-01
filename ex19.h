@@ -4,7 +4,7 @@
 #include "object.h"
 
 struct Monster {
-  Object prote;
+  Object proto;
   int hit_points;
 };
 
