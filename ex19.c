@@ -42,7 +42,7 @@ void *Room_move(void *self, Direction direction) {
     next = room->south;
   } else if (direction == EAST && room->east) {
     printf("You go east, into:\n");
-    next = room->west;
+    next = room->east;
   } else if (direction == WEST && room->west) {
     printf("You go west, into:\n");
     next = room->west;
