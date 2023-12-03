@@ -1,5 +1,6 @@
 #include "ex19.h"
 #include "object.h"
+#include <assert.h>
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,6 +8,7 @@
 #include <time.h>
 
 int Monster_attack(void *self, int damage) {
+  assert(self != NULL);
   Monster *monster = self;
 
   printf("You attack %s!\n", monster->_(description));
@@ -23,6 +25,7 @@ int Monster_attack(void *self, int damage) {
 }
 
 int Monster_init(void *self) {
+  assert(self != NULL);
   Monster *monster = self;
   monster->hit_points = 10;
   return (1);
@@ -31,6 +34,7 @@ int Monster_init(void *self) {
 Object MonsterProto = {.init = Monster_init, .attack = Monster_attack};
 
 void *Room_move(void *self, Direction direction) {
+  assert(self != NULL);
   Room *room = self;
   Room *next = NULL;
 
@@ -55,10 +59,12 @@ void *Room_move(void *self, Direction direction) {
     next->_(describe)(next);
   }
 
+  assert(next != NULL);
   return (next);
 }
 
 int Room_attack(void *self, int damage) {
+  assert(self != NULL);
   Room *room = self;
   Monster *monster = room->bad_guy;
 
@@ -74,6 +80,7 @@ int Room_attack(void *self, int damage) {
 Object RoomProto = {.move = Room_move, .attack = Room_attack};
 
 void *Map_move(void *self, Direction direction) {
+  assert(self != NULL);
   Map *map = self;
   Room *location = map->location;
   Room *next = NULL;
@@ -84,10 +91,12 @@ void *Map_move(void *self, Direction direction) {
     map->location = next;
   }
 
+  assert(next != NULL);
   return (next);
 }
 
 int Map_attack(void *self, int damage) {
+  assert(self != NULL);
   Map *map = self;
   Room *location = map->location;
 
@@ -95,6 +104,7 @@ int Map_attack(void *self, int damage) {
 }
 
 int Map_init(void *self) {
+  assert(self != NULL);
   Map *map = self;
 
   // make some rooms for a small map
@@ -126,6 +136,7 @@ int Map_init(void *self) {
 Object MapProto = {.init = Map_init, .move = Map_move, .attack = Map_attack};
 
 int process_input(Map *game) {
+  assert(game != NULL);
   printf("\n> ");
 
   char ch = getchar();
