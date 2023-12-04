@@ -7,5 +7,4 @@ ex19: object.o
 .PHONY : all clean
 
 clean :
-	rm -f object.o
-	rm -f ex19
+	rm -f object.o ex19

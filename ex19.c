@@ -59,7 +59,6 @@ void *Room_move(void *self, Direction direction) {
     next->_(describe)(next);
   }
 
-  assert(next != NULL);
   return (next);
 }
 
@@ -91,7 +90,6 @@ void *Map_move(void *self, Direction direction) {
     map->location = next;
   }
 
-  assert(next != NULL);
   return (next);
 }
 
