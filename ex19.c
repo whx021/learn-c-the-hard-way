@@ -110,6 +110,10 @@ int Map_init(void *self) {
   Room *throne = NEW(Room, "The throne room");
   Room *arena = NEW(Room, "The arena, with the minotaur");
   Room *kitchen = NEW(Room, "Kitchen, you have knife now");
+  Room *store = NEW(Room, "Store, you can buy weapon");
+  Room *study = NEW(Room, "Study, you can learn magic");
+  Room *adytum = NEW(Room, "The adytum, you can hide here");
+  Room *treasure_house = NEW(Room, "You find treasure_house");
 
   // put the bad guy in the arena
   arena->bad_guy = NEW(Monster, "The evil minotaur");
